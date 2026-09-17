@@ -1,63 +1,82 @@
-Descrição do Projeto:
-OCR com Tesseract e Python para Extração de Texto de Imagens (PNG/JPG)
+# OCR-Python
 
-Este projeto utiliza o Tesseract OCR e a biblioteca OpenCV para realizar a extração de texto de imagens. A aplicação é projetada para converter uma imagem (ex: JPG) em texto, realizando pré-processamento da imagem para melhorar a precisão do OCR, e salvando o texto extraído em um documento do tipo .docx.
+> OCR de imagens com Python, Tesseract e OpenCV, com pré-processamento e exportação do texto extraído para `.docx`.
 
-Principais Funcionalidades:
-Carregamento de imagem local para extração de texto.
+## Visão geral
 
-Pré-processamento da imagem (escala de cinza, redimensionamento, suavização e limiarização).
+Projeto de engenharia de OCR para transformar imagens PNG/JPG em texto pesquisável. O fluxo aplica pré-processamento da imagem antes da leitura pelo Tesseract e gera um documento Word com o resultado.
 
-Configuração personalizada para o Tesseract OCR para melhorar a acuracidade.
+## Funcionalidades
 
-Geração de arquivo Word (.docx) com o texto extraído.
+- Carregamento de imagens locais (PNG/JPG).
+- Conversão para escala de cinza.
+- Redimensionamento e suavização.
+- Limiarização de Otsu para realce do texto.
+- Extração de texto com Tesseract OCR.
+- Exibição do resultado no console.
+- Exportação para `.docx`.
+- Geração opcional de imagem pré-processada para inspeção/debug.
 
-Exibição do texto extraído no console.
+## Arquitetura do fluxo
 
-Armazenamento de uma imagem de debug com a imagem pré-processada.
+```text
+Imagem
+  ↓
+OpenCV / Pré-processamento
+  ↓
+Tesseract OCR
+  ↓
+Texto extraído
+  ├── Console
+  └── Documento .docx
+```
 
-Tecnologias Utilizadas:
-Python: Linguagem de programação para manipulação de imagem e execução do OCR.
+## Stack
 
-Tesseract OCR: Ferramenta para extração de texto a partir de imagens.
+- Python 3.x
+- OpenCV
+- Tesseract OCR
+- pytesseract
+- python-docx
 
-OpenCV: Biblioteca para manipulação e pré-processamento de imagens.
+## Instalação
 
-python-docx: Para salvar o resultado em um arquivo Word.
+Crie um ambiente virtual e instale as dependências:
 
-Como Funciona:
-O código carrega a imagem do caminho especificado.
+```bash
+python -m venv .venv
 
-A imagem é convertida para escala de cinza, redimensionada e suavizada.
+# Windows
+.venv\Scripts\activate
 
-É aplicada a limiarização de Otsu para melhorar a definição do texto.
+# Linux/macOS
+source .venv/bin/activate
 
-O Tesseract OCR é executado para extrair o texto da imagem.
+pip install -r requirements.txt
+```
 
-O texto extraído é salvo em um arquivo .docx com a data e hora no nome do arquivo.
+O executável do Tesseract também precisa estar instalado no sistema. Em instalações Windows, configure o caminho do executável no código/configuração do projeto quando necessário.
 
-O texto extraído também é exibido no console.
+## Uso
 
-Pré-requisitos:
-Python 3.x
+O código original deste repositório foi desenvolvido para receber o caminho de uma imagem, executar o pipeline de OCR e gerar um `.docx`. Antes de executar, utilize uma imagem de exemplo e ajuste a entrada conforme a implementação local.
 
-Tesseract OCR instalado e configurado corretamente.
+## Dados e privacidade
 
-Bibliotecas necessárias: cv2, pytesseract, os, docx, datetime.
+Não inclua documentos reais, documentos pessoais, credenciais, chaves de API ou dados institucionais neste repositório. Para demonstrações públicas, utilize somente arquivos sintéticos ou autorizados.
 
-Para instalar as dependências, use:
+## Evolução recomendada
 
-bash
-Copiar
-Editar
-pip install opencv-python pytesseract python-docx
-Instruções de Uso:
-Certifique-se de que o Tesseract OCR esteja instalado corretamente no seu sistema.
+- Separar o pipeline em módulos de entrada, pré-processamento, OCR e exportação.
+- Tornar parâmetros de OCR configuráveis.
+- Adicionar testes automatizados.
+- Adicionar métricas de qualidade, como CER/WER, usando conjuntos de teste sintéticos.
+- Adicionar processamento em lote.
+- Evoluir para Document Intelligence com extração estruturada e validação de campos.
 
-Ajuste o caminho da imagem no código conforme necessário.
+## Autor
 
-Execute o script Python e o texto extraído será salvo automaticamente em um arquivo .docx na área de trabalho.
+**Anderson Leon Ayora**  
+Data Scientist | AI Engineer | Data Architect
 
-Objetivo:
-Este código pode ser utilizado para sistemas de automação de digitalização de documentos, especialmente útil em ambientes administrativos, jurídicos e em processos que necessitam de extração de texto a partir de imagens escaneadas ou fotografadas.
-
+Foco: Applied AI, Document Intelligence, OCR, Intelligent Automation e Data Engineering.
