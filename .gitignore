@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# OCR generated artifacts
+*.docx
+*_debug.*
+output/
+outputs/
+logs/
+
+# Local/private documents
+*.png
+*.jpg
+*.jpeg
+*.pdf
+*.xlsx
+*.xls
